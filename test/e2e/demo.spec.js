@@ -13,29 +13,17 @@ describe('aurelia skeleton app', function() {
   });
 
   it('should load the page and display the initial page title', () => {
-    expect(poSkeleton.getCurrentPageTitle()).toBe('Welcome | Aurelia');
+    expect(poSkeleton.getCurrentPageTitle()).toBe('Welcome | DHEX');
   });
 
   it('should display greeting', () => {
-    expect(poWelcome.getGreeting()).toBe('Welcome to the Aurelia Navigation App!');
-  });
-
-  it('should automatically write down the fullname', () => {
-    poWelcome.setFirstname('Rob');
-    poWelcome.setLastname('Eisenberg');
-
-    // For now there is a timing issue with the binding.
-    // Until resolved we will use a short sleep to overcome the issue.
-    browser.sleep(200);
-    expect(poWelcome.getFullname()).toBe('ROB EISENBERG');
+    expect(poWelcome.getGreeting()).toBe('Welcome to the DHEX App!');
   });
 
   it('should show alert message when clicking submit button', () => {
+    poWelcome.setFullName('Rob');
+    poWelcome.pressSubmitButton();
     expect(poWelcome.openAlertDialog()).toBe(true);
   });
 
-  it('should navigate to users page', () => {
-    poSkeleton.navigateTo('#/users');
-    expect(poSkeleton.getCurrentPageTitle()).toBe('Github Users | Aurelia');
-  });
 });

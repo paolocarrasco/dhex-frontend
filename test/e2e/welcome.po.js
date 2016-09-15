@@ -8,16 +8,8 @@ export class PageObjectWelcome {
     return element(by.tagName('h2')).getText();
   }
 
-  setFirstname(value) {
-    return element(by.valueBind('firstName')).clear().sendKeys(value);
-  }
-
-  setLastname(value) {
-    return element(by.valueBind('lastName')).clear().sendKeys(value);
-  }
-
-  getFullname() {
-    return element(by.css('.help-block')).getText();
+  setFullName(value) {
+    return element(by.valueBind('fullName')).clear().sendKeys(value);
   }
 
   pressSubmitButton() {
@@ -26,8 +18,6 @@ export class PageObjectWelcome {
 
   openAlertDialog() {
     return browser.wait(() => {
-      this.pressSubmitButton();
-
       return browser.wait(ExpectedConditions.alertIsPresent(), 5000).then(
         browser.switchTo().alert().then(
           // use alert.accept instead of alert.dismiss which results in a browser crash
