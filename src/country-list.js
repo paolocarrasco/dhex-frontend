@@ -5,8 +5,8 @@ import {HttpClient} from 'aurelia-fetch-client';
 const fetch = !self.fetch ? System.import('isomorphic-fetch') : Promise.resolve(self.fetch);
 
 @inject(Lazy.of(HttpClient))
-export class Users {
-  heading = 'Github Users';
+export class CountryList {
+  heading = 'Country List';
   users = [];
 
   constructor(getHttpClient) {
@@ -20,11 +20,18 @@ export class Users {
 
     http.configure(config => {
       config
-        .useStandardConfiguration()
-        .withBaseUrl('https://api.github.com/');
+        .withDefaults({
+            credentials: 'same-origin',
+            headers: {
+                mode: 'cors',
+                'Accept': 'application/json',
+                'X-Requested-With': 'Fetch'
+            }
+        })
+        .withBaseUrl('http://localhost:8080/');
     });
 
-    const response = await http.fetch('users');
+    const response = await http.fetch('countries');
     this.users = await response.json();
   }
 }
