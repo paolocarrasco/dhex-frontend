@@ -1,15 +1,39 @@
+import {inject, Lazy} from 'aurelia-framework';
+import {HttpClient} from 'aurelia-fetch-client';
 
+// polyfill fetch client conditionally
+const fetch = !self.fetch ? System.import('isomorphic-fetch') : Promise.resolve(self.fetch);
+
+@inject(Lazy.of(HttpClient))
 export class Welcome {
-  heading = 'Welcome to the DHEX App!';
-  fullName = '';
+  countryName = '';
+
+  constructor(getHttpClient) {
+    this.getHttpClient = getHttpClient;
+  }
 
   submit() {
-    alert(`Welcome, ${this.fullName}!`);
-  }
-}
+    const http = this.http = this.getHttpClient();
 
-export class UpperValueConverter {
-  toView(value) {
-    return value && value.toUpperCase();
+    http.configure(config => {
+      config
+        .withDefaults({
+            credentials: 'same-origin',
+            headers: {
+                mode: 'cors',
+                'Accept': 'application/json',
+                'X-Requested-With': 'Fetch'
+            }
+        })
+        .withBaseUrl('http://localhost:8080/');
+    });
+
+    http.fetch('countries', {
+        method: 'post',
+        body: this.countryName
+      })
+      .then(response => {
+        alert('successful');
+      });
   }
 }
