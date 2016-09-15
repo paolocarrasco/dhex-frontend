@@ -30,6 +30,7 @@ exports.config = {
   },
 
   onPrepare: function() {
+    require('jasmine-given');
     require('babel-register')({
       plugins: ['transform-decorators-legacy'],
       presets: ['es2015-loose-native-modules', 'stage-1'],

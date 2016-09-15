@@ -3,17 +3,18 @@ poWelcome = require('../pages/welcome.po.coffee')
 
 describe 'aurelia skeleton app', ->
 
-  beforeEach ->
-    # browser.get('/')
+  When ->
     browser.loadAndWaitForAureliaPage('http://localhost:19876')
 
-  it 'should load the page and display the initial page title', ->
+  Then ->
     expect(poSkeleton.currentPageTitle).toBe('Welcome | DHEX')
-
-  it 'should display greeting', ->
+  And ->
     expect(poWelcome.greeting).toBe('Welcome to the DHEX App!')
 
-  it 'should show alert message when clicking submit button', ->
-    poWelcome.setFullName('Rob')
-    poWelcome.pressSubmitButton()
-    expect(poWelcome.openAlertDialog()).toBe(true)
+  describe 'alert message when clicking submit button', ->
+    Given ->
+      poWelcome.setFullName('Rob')
+    When ->
+      poWelcome.pressSubmitButton()
+    Then ->
+      expect(poWelcome.openAlertDialog()).toBe(true)
