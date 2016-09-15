@@ -2,15 +2,15 @@
   <section class="au-animate">
     <h2>${heading}</h2>
     <div class="row au-stagger">
-      <div class="col-sm-6 col-md-3 card-container au-animate" repeat.for="user of users">
+      <div class="col-sm-6 col-md-3 card-container au-animate" repeat.for="country of countries">
         <div class="card">
           <canvas class="header-bg" width="250" height="70" blur-image.bind="image"></canvas>
           <div class="avatar">
-            <img src.bind="user.avatar_url" crossorigin ref="image"/>
+            <img src="https://cdn3.iconfinder.com/data/icons/linecons-free-vector-icons-pack/32/world-128.png" crossorigin ref="image"/>
           </div>
           <div class="content">
-            <p class="name">${user.login}</p>
-            <p><a target="_blank" class="btn btn-default" href.bind="user.html_url">Contact</a></p>
+            <p class="name">${country.name}</p>
+            <p><a target="_blank" class="btn btn-default" href="mailto:embassy@onu.org">Contact</a></p>
           </div>
         </div>
       </div>

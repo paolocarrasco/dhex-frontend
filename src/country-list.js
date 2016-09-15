@@ -7,7 +7,7 @@ const fetch = !self.fetch ? System.import('isomorphic-fetch') : Promise.resolve(
 @inject(Lazy.of(HttpClient))
 export class CountryList {
   heading = 'Country List';
-  users = [];
+  countries = [];
 
   constructor(getHttpClient) {
     this.getHttpClient = getHttpClient;
@@ -31,7 +31,10 @@ export class CountryList {
         .withBaseUrl('http://localhost:8080/');
     });
 
-    const response = await http.fetch('countries');
-    this.users = await response.json();
+    http.fetch('countries')
+      .then(response => response.json())
+      .then(data => {
+        this.countries = data.list;
+      });
   }
 }

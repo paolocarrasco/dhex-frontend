@@ -12,7 +12,7 @@ const ENV = process.env.NODE_ENV && process.env.NODE_ENV.toLowerCase() || 'devel
 let config;
 
 // basic configuration:
-const title = 'Aurelia Navigation Skeleton';
+const title = 'DHEX Shipping - You send it, they get it';
 const baseUrl = '/';
 const rootDir = path.resolve();
 const srcDir = path.resolve('src');
@@ -74,7 +74,7 @@ switch (ENV) {
 
       require('@easy-webpack/config-env-production')
         ({compress: true}),
-        
+
       require('@easy-webpack/config-aurelia')
         ({root: rootDir, src: srcDir, title: title, baseUrl: baseUrl}),
 
@@ -101,7 +101,7 @@ switch (ENV) {
         ({debug: false})
     );
     break;
-  
+
   case 'test':
     config = generateConfig(
       baseConfig,
@@ -127,7 +127,7 @@ switch (ENV) {
       require('@easy-webpack/config-test-coverage-istanbul')()
     );
     break;
-  
+
   default:
   case 'development':
     process.env.NODE_ENV = 'development';
