@@ -1,9 +1,11 @@
+require('coffee-script/register');
+
 exports.config = {
   baseUrl: 'http://localhost:19876/',
 
   // use `npm run e2e`
   specs: [
-    'e2e/**/*.js'
+    'e2e/**/*.coffee'
   ],
   exclude: [],
 
