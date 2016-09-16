@@ -1,4 +1,4 @@
-# aurelia-skeleton-webpack
+# DHEX Shipping Web Front-end
 
 ## Getting started
 
