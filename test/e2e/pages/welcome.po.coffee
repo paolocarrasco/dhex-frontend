@@ -4,6 +4,7 @@ module.exports = Page.create
   url: get: -> browser.baseUrl
 
   greeting: get: -> element(By.tagName('h2')).getText()
+
   setFullName: value: (fullName) ->
     return element(By.valueBind('fullName')).clear().sendKeys(fullName)
 

@@ -11,3 +11,10 @@ describe 'Country Creation', ->
 
   Then ->
     expect(countryCreationPage.labelForInput.getText()).toBe 'Insert here the name of the country.'
+
+  describe 'create country', ->
+    When ->
+      countryCreationPage.save('Surinam')
+
+    Then ->
+      expect(countryCreationPage.openAlertDialog()).toBe(true)

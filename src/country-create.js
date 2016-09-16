@@ -33,7 +33,7 @@ export class Welcome {
         body: this.countryName
       })
       .then(response => {
-        alert('successful');
+        alert('The country was successfully saved');
       });
   }
 }
